@@ -1,0 +1,145 @@
+{
+    "name": "FitbitDataSync",
+    "namespace": "HealthPartners\\Institute\\FitbitDataSync",
+    "description": "This external module facilitates fitbit device data collection from study participants",
+    "documentation": "README.pdf",
+    "framework-version": 5,
+    "authors": [
+        {
+            "name": "Vijayakumar Thirumalai",
+            "email": "vijayakumar.x.thirumalai@healthpartners.com",
+            "institution": "HealthPartners Institute"
+        } 
+    ],
+    "links": {
+        "project": [
+            {
+                "name": "Fitbitsync batch job Service",
+                "icon": "fas fa-users-cog",
+                "url": "apimanager.php?NOAUTH",
+                "show-header-and-footer": true
+            }
+        ]
+    },
+    "no-auth-pages": [
+        "apimanager"
+    ],
+    "project-settings": [
+        {
+            "key": "fitbit-client-id",
+            "name": "fitbit-client-id",
+            "type": "text",
+            "required": true,
+            "super-users-only": true
+        },
+        {
+            "key": "fitbit-client-secret",
+            "name": "fitbit-client-secret",
+            "type": "text",
+            "required": true,
+            "super-users-only": true
+        },
+        {
+            "key": "fitbit-auth-url",
+            "name": "fitbit-auth-url",
+            "type": "text",
+            "required": true,
+            "super-users-only": true
+        },
+        {
+            "key": "fitbit-token-url",
+            "name": "fitbit-token-url",
+            "type": "text",
+            "required": true,
+            "super-users-only": true
+        },
+        {
+            "key": "fitbit-redirect-url",
+            "name": "fitbit-redirect-url",
+            "type": "text",
+            "required": true,
+            "super-users-only": true
+        },
+        {
+            "key": "fitbit-scope",
+            "name": "fitbit-scope - space seperated value (activity heartrate location nutrition profile settings sleep social weight) - For now 'sleep' and 'activity' only EM supported scope for data pull",
+            "type": "text",
+            "required": true,
+            "super-users-only": true
+        },
+        {
+            "key": "fitbit-salt",
+            "name": "fitbit-salt key which is used to encrypt record id and handle CSRF production",
+            "type": "text",
+            "required": true,
+            "super-users-only": true
+        },
+        {
+            "key": "participant-encrypt-key-field",
+            "name": "Where to store the particiapnt unique key to match after authorization?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "participant-auth-url-field",
+            "name": "Where to store auth url for particiapnt invite?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "access-token-field",
+            "name": "Where to store fitbit access token?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "refresh-token-field",
+            "name": "Where to store fitbit refresh token?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "sleeplogrepeating-form",
+            "name": "Select Sleep Log Repeating form to add data for each day:",
+            "type": "form-list",
+            "required": true
+        },
+        {
+            "key": "sleeplog-store-field",
+            "name": "Where to store SleepLog full response JSON?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "sleeplog-date-field",
+            "name": "Where to store SleepLog date?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "activitylogrepeating-form",
+            "name": "Select Activity Log Repeating Form to add data for each day:",
+            "type": "form-list",
+            "required": true
+        },
+        {
+            "key": "activitylog-store-field",
+            "name": "Where to store ActivityLog full response JSON?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "activitylog-date-field",
+            "name": "Where to store ActivityLog date?",
+            "type": "field-list",
+            "required": true
+        }
+
+    ],
+    "compatibility": {
+		"php-version-min": "7.0.0",
+		"php-version-max": "",
+		"redcap-version-min": "10.8.4",
+		"redcap-version-max": ""
+	}
+}

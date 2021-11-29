@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ODM xmlns="http://www.cdisc.org/ns/odm/v1.3" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:redcap="https://projectredcap.org" xsi:schemaLocation="http://www.cdisc.org/ns/odm/v1.3 schema/odm/ODM1-3-1.xsd" ODMVersion="1.3.1" FileOID="000-00-0000" FileType="Snapshot" Description="FitbitDataSync" AsOfDateTime="2021-10-11T18:12:20" CreationDateTime="2021-10-11T18:12:20" SourceSystem="REDCap" SourceSystemVersion="10.8.4">
+<Study OID="Project.FitbitDataSync">
+<GlobalVariables>
+	<StudyName>FitbitDataSync</StudyName>
+	<StudyDescription>This file contains the metadata, events, and data for REDCap project "FitbitDataSync".</StudyDescription>
+	<ProtocolName>FitbitDataSync</ProtocolName>
+	<redcap:RecordAutonumberingEnabled>1</redcap:RecordAutonumberingEnabled>
+	<redcap:CustomRecordLabel></redcap:CustomRecordLabel>
+	<redcap:SecondaryUniqueField></redcap:SecondaryUniqueField>
+	<redcap:SchedulingEnabled>0</redcap:SchedulingEnabled>
+	<redcap:SurveysEnabled>1</redcap:SurveysEnabled>
+	<redcap:SurveyInvitationEmailField>email_addr</redcap:SurveyInvitationEmailField>
+	<redcap:Purpose>0</redcap:Purpose>
+	<redcap:PurposeOther></redcap:PurposeOther>
+	<redcap:ProjectNotes></redcap:ProjectNotes>
+	<redcap:MissingDataCodes></redcap:MissingDataCodes>
+	<redcap:RepeatingInstrumentsAndEvents>
+		<redcap:RepeatingInstruments>
+			<redcap:RepeatingInstrument redcap:UniqueEventName="event_1_arm_1" redcap:RepeatInstrument="sleep_data" redcap:CustomLabel="[dateofsleep]"/>
+			<redcap:RepeatingInstrument redcap:UniqueEventName="event_1_arm_1" redcap:RepeatInstrument="activity_data" redcap:CustomLabel="[dateofactivity]"/>
+		</redcap:RepeatingInstruments>
+	</redcap:RepeatingInstrumentsAndEvents>
+	<redcap:SurveysGroup>
+		<redcap:Surveys form_name="fitbit_data_sync_invite_survey" title="Fitbit Data Sync Invite Survey" instructions="&lt;p&gt;&lt;strong&gt;Please complete the survey below.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Thank you!&lt;/p&gt;" acknowledgement="&lt;p&gt;&lt;strong&gt;Thank you for taking the survey.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Have a nice day!&lt;/p&gt;" question_by_section="0" display_page_number="0" question_auto_numbering="1" survey_enabled="1" save_and_return="0" save_and_return_code_bypass="0" logo="" hide_title="0" view_results="0" min_responses_view_results="10" check_diversity_view_results="0" end_survey_redirect_url="" survey_expiration="" promis_skip_question="0" survey_auth_enabled_single="0" edit_completed_response="0" hide_back_button="0" show_required_field_text="1" confirmation_email_subject="" confirmation_email_content="" confirmation_email_from="" confirmation_email_from_display="" confirmation_email_attach_pdf="0" confirmation_email_attachment="" text_to_speech="0" text_to_speech_language="en" end_survey_redirect_next_survey="0" theme="" text_size="1" font_family="16" theme_text_buttons="" theme_bg_page="" theme_text_title="" theme_bg_title="" theme_text_sectionheader="" theme_bg_sectionheader="" theme_text_question="" theme_bg_question="" enhanced_choices="0" repeat_survey_enabled="0" repeat_survey_btn_text="" repeat_survey_btn_location="HIDDEN" response_limit="" response_limit_include_partials="1" response_limit_custom_text="&lt;p&gt;Thank you for your interest; however, the survey is closed because the maximum number of responses has been reached.&lt;/p&gt;" survey_time_limit_days="" survey_time_limit_hours="" survey_time_limit_minutes="" email_participant_field="" end_of_survey_pdf_download="0" pdf_save_to_field="" pdf_save_to_event_id="" pdf_auto_archive="0" pdf_econsent_version="" pdf_econsent_type="" pdf_econsent_firstname_field="" pdf_econsent_firstname_event_id="" pdf_econsent_lastname_field="" pdf_econsent_lastname_event_id="" pdf_econsent_dob_field="" pdf_econsent_dob_event_id="" pdf_econsent_allow_edit="1" pdf_econsent_signature_field1="" pdf_econsent_signature_field2="" pdf_econsent_signature_field3="" pdf_econsent_signature_field4="" pdf_econsent_signature_field5=""/>
+	</redcap:SurveysGroup>
+</GlobalVariables>
+<MetaDataVersion OID="Metadata.FitbitDataSync_2021-10-11_1812" Name="FitbitDataSync" redcap:RecordIdField="record_id">
+	<FormDef OID="Form.basic_demography" Name="Basic Demography" Repeating="No" redcap:FormName="basic_demography">
+		<ItemGroupRef ItemGroupOID="basic_demography.record_id" Mandatory="No"/>
+		<ItemGroupRef ItemGroupOID="basic_demography.basic_demography_complete" Mandatory="No"/>
+	</FormDef>
+	<FormDef OID="Form.fitbit_data_sync_invite_survey" Name="Fitbit Data Sync Invite Survey" Repeating="No" redcap:FormName="fitbit_data_sync_invite_survey">
+		<ItemGroupRef ItemGroupOID="fitbit_data_sync_invite_survey.invi_desc" Mandatory="No"/>
+		<ItemGroupRef ItemGroupOID="fitbit_data_sync_invite_survey.fitbit_data_sync_invite_survey_complete" Mandatory="No"/>
+	</FormDef>
+	<FormDef OID="Form.sleep_data" Name="Sleep Data" Repeating="No" redcap:FormName="sleep_data">
+		<ItemGroupRef ItemGroupOID="sleep_data.dateofsleep" Mandatory="No"/>
+		<ItemGroupRef ItemGroupOID="sleep_data.sleep_data_complete" Mandatory="No"/>
+	</FormDef>
+	<FormDef OID="Form.activity_data" Name="Activity Data" Repeating="No" redcap:FormName="activity_data">
+		<ItemGroupRef ItemGroupOID="activity_data.dateofactivity" Mandatory="No"/>
+		<ItemGroupRef ItemGroupOID="activity_data.activity_data_complete" Mandatory="No"/>
+	</FormDef>
+	<ItemGroupDef OID="basic_demography.record_id" Name="Basic Demography" Repeating="No">
+		<ItemRef ItemOID="record_id" Mandatory="No" redcap:Variable="record_id"/>
+		<ItemRef ItemOID="email_addr" Mandatory="Yes" redcap:Variable="email_addr"/>
+		<ItemRef ItemOID="oauth_unique_state" Mandatory="No" redcap:Variable="oauth_unique_state"/>
+		<ItemRef ItemOID="fitbit_access_token" Mandatory="No" redcap:Variable="fitbit_access_token"/>
+		<ItemRef ItemOID="fitbit_refresh_token" Mandatory="No" redcap:Variable="fitbit_refresh_token"/>
+		<ItemRef ItemOID="fitbit_invite_url" Mandatory="No" redcap:Variable="fitbit_invite_url"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="basic_demography.basic_demography_complete" Name="Form Status" Repeating="No">
+		<ItemRef ItemOID="basic_demography_complete" Mandatory="No" redcap:Variable="basic_demography_complete"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="fitbit_data_sync_invite_survey.invi_desc" Name="Fitbit Data Sync Invite Survey" Repeating="No">
+		<ItemRef ItemOID="invi_desc" Mandatory="No" redcap:Variable="invi_desc"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="fitbit_data_sync_invite_survey.fitbit_data_sync_invite_survey_complete" Name="Form Status" Repeating="No">
+		<ItemRef ItemOID="fitbit_data_sync_invite_survey_complete" Mandatory="No" redcap:Variable="fitbit_data_sync_invite_survey_complete"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="sleep_data.dateofsleep" Name="Sleep Data" Repeating="No">
+		<ItemRef ItemOID="dateofsleep" Mandatory="No" redcap:Variable="dateofsleep"/>
+		<ItemRef ItemOID="sleeplog_response" Mandatory="No" redcap:Variable="sleeplog_response"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="sleep_data.sleep_data_complete" Name="Form Status" Repeating="No">
+		<ItemRef ItemOID="sleep_data_complete" Mandatory="No" redcap:Variable="sleep_data_complete"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="activity_data.dateofactivity" Name="Activity Data" Repeating="No">
+		<ItemRef ItemOID="dateofactivity" Mandatory="No" redcap:Variable="dateofactivity"/>
+		<ItemRef ItemOID="activitylog_response" Mandatory="No" redcap:Variable="activitylog_response"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="activity_data.activity_data_complete" Name="Form Status" Repeating="No">
+		<ItemRef ItemOID="activity_data_complete" Mandatory="No" redcap:Variable="activity_data_complete"/>
+	</ItemGroupDef>
+	<ItemDef OID="record_id" Name="record_id" DataType="text" Length="999" redcap:Variable="record_id" redcap:FieldType="text">
+		<Question><TranslatedText>Record ID</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="email_addr" Name="email_addr" DataType="text" Length="999" redcap:Variable="email_addr" redcap:FieldType="text" redcap:TextValidationType="email" redcap:RequiredField="y">
+		<Question><TranslatedText>Email Address:</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="oauth_unique_state" Name="oauth_unique_state" DataType="text" Length="999" redcap:Variable="oauth_unique_state" redcap:FieldType="text" redcap:FieldAnnotation="@READONLY">
+		<Question><TranslatedText>Unique Token to verify after authorization</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="fitbit_access_token" Name="fitbit_access_token" DataType="text" Length="999" redcap:Variable="fitbit_access_token" redcap:FieldType="text" redcap:FieldAnnotation="@READONLY">
+		<Question><TranslatedText>Fitbit access token</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="fitbit_refresh_token" Name="fitbit_refresh_token" DataType="text" Length="999" redcap:Variable="fitbit_refresh_token" redcap:FieldType="text" redcap:FieldAnnotation="@READONLY">
+		<Question><TranslatedText>Fitbit refresh token</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="fitbit_invite_url" Name="fitbit_invite_url" DataType="text" Length="999" redcap:Variable="fitbit_invite_url" redcap:FieldType="text" redcap:FieldAnnotation="@READONLY">
+		<Question><TranslatedText>Fitbit Data Sync Invite URL</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="basic_demography_complete" Name="basic_demography_complete" DataType="text" Length="1" redcap:Variable="basic_demography_complete" redcap:FieldType="select" redcap:SectionHeader="Form Status">
+		<Question><TranslatedText>Complete?</TranslatedText></Question>
+		<CodeListRef CodeListOID="basic_demography_complete.choices"/>
+	</ItemDef>
+	<ItemDef OID="invi_desc" Name="invi_desc" DataType="text" Length="999" redcap:Variable="invi_desc" redcap:FieldType="descriptive">
+		<Question><TranslatedText>Please click the below link to approve us to get your fitbit data. 
+
+Fitbit Data Linking</TranslatedText><redcap:FormattedTranslatedText>&lt;div class=&quot;rich-text-field-label&quot;&gt;&lt;p&gt;Please click the below link to approve us to get your fitbit data. &lt;br /&gt;&lt;br /&gt;&lt;a title=&quot;Fitbit&quot; href=&quot;[fitbit_invite_url]&quot;&gt;Fitbit Data Linking&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</redcap:FormattedTranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="fitbit_data_sync_invite_survey_complete" Name="fitbit_data_sync_invite_survey_complete" DataType="text" Length="1" redcap:Variable="fitbit_data_sync_invite_survey_complete" redcap:FieldType="select" redcap:SectionHeader="Form Status">
+		<Question><TranslatedText>Complete?</TranslatedText></Question>
+		<CodeListRef CodeListOID="fitbit_data_sync_invite_survey_complete.choices"/>
+	</ItemDef>
+	<ItemDef OID="dateofsleep" Name="dateofsleep" DataType="text" Length="999" redcap:Variable="dateofsleep" redcap:FieldType="text">
+		<Question><TranslatedText>dateOfSleep from Fitbit</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="sleeplog_response" Name="sleeplog_response" DataType="text" Length="999" redcap:Variable="sleeplog_response" redcap:FieldType="textarea">
+		<Question><TranslatedText>Full Sleep Log Response : </TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="sleep_data_complete" Name="sleep_data_complete" DataType="text" Length="1" redcap:Variable="sleep_data_complete" redcap:FieldType="select" redcap:SectionHeader="Form Status">
+		<Question><TranslatedText>Complete?</TranslatedText></Question>
+		<CodeListRef CodeListOID="sleep_data_complete.choices"/>
+	</ItemDef>
+	<ItemDef OID="dateofactivity" Name="dateofactivity" DataType="text" Length="999" redcap:Variable="dateofactivity" redcap:FieldType="text">
+		<Question><TranslatedText>Date of Activity from Fitbit</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="activitylog_response" Name="activitylog_response" DataType="text" Length="999" redcap:Variable="activitylog_response" redcap:FieldType="textarea">
+		<Question><TranslatedText>Full Activity Log Response : </TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="activity_data_complete" Name="activity_data_complete" DataType="text" Length="1" redcap:Variable="activity_data_complete" redcap:FieldType="select" redcap:SectionHeader="Form Status">
+		<Question><TranslatedText>Complete?</TranslatedText></Question>
+		<CodeListRef CodeListOID="activity_data_complete.choices"/>
+	</ItemDef>
+	<CodeList OID="basic_demography_complete.choices" Name="basic_demography_complete" DataType="text" redcap:Variable="basic_demography_complete">
+		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
+	</CodeList>
+	<CodeList OID="fitbit_data_sync_invite_survey_complete.choices" Name="fitbit_data_sync_invite_survey_complete" DataType="text" redcap:Variable="fitbit_data_sync_invite_survey_complete">
+		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
+	</CodeList>
+	<CodeList OID="sleep_data_complete.choices" Name="sleep_data_complete" DataType="text" redcap:Variable="sleep_data_complete">
+		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
+	</CodeList>
+	<CodeList OID="activity_data_complete.choices" Name="activity_data_complete" DataType="text" redcap:Variable="activity_data_complete">
+		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
+	</CodeList>
+</MetaDataVersion>
+</Study>
+</ODM>
