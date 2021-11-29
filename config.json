@@ -3,7 +3,7 @@
     "namespace": "HealthPartners\\Institute\\FitbitDataSync",
     "description": "This external module facilitates fitbit device data collection from study participants",
     "documentation": "README.pdf",
-    "framework-version": 7,
+    "framework-version": 5,
     "authors": [
         {
             "name": "Vijayakumar Thirumalai",
