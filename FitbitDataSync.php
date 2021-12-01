@@ -58,9 +58,9 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
                         $writeDataArray[$curr_record[$record_id_field]][$eventid][$record_id_field] = $curr_record[$record_id_field];
                         $writeDataArray[$curr_record[$record_id_field]][$eventid][$this->fitbitRecordEncryptKey] = $uniqueOAuthState;
                         $writeDataArray[$curr_record[$record_id_field]][$eventid][$this->fitbitInviteURLField] = $url;
-                        print_r($writeDataArray);
+                        //print_r($writeDataArray);
                         $saveREDCapResponse = REDCap::saveData($this->getProjectId(), 'array', $writeDataArray, 'overwrite');
-                        print_r($saveREDCapResponse);
+                        //print_r($saveREDCapResponse);
                     }
                 }
             }
@@ -330,7 +330,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
                                     $this->fitbitActivityLogDateField => $yesterdayParamFormat
                                 ]
                             ];
-                            print_r($redcapWriteJSONArray);
+                            //print_r($redcapWriteJSONArray);
                             $redcapWriteJSON = json_encode($redcapWriteJSONArray, JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE,);
                             $redcapWriteJSONResponse = REDCap::saveData($this->getProjectId(), 'json', $redcapWriteJSON, 'overwrite');
                         }
