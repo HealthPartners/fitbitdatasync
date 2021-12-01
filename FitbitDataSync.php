@@ -41,7 +41,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
         $this->fitbitRecordEncryptKey = $this->getProjectSetting("participant-encrypt-key-field");
         $this->fitbitRefreshTokenField = $this->getProjectSetting("refresh-token-field");
 
-        $filterLogic = "([" . $this->fitbitInviteURLField . "]" . " = ''" . ")  " ;
+        $filterLogic = "([" . $this->fitbitInviteURLField . "]" . " = ''" . ")  ";
         //echo "### : ". $filterLogic;
         if (isset($this->fitbitInviteURLField)) {
             $readParams = array('project_id' => $this->getProjectId(), 'fields' => array($record_id_field, $this->fitbitInviteURL), 'filterLogic' => $filterLogic);
@@ -84,7 +84,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
         $this->fitbitRefreshTokenField = $this->getProjectSetting("refresh-token-field");
         $basicToken = "";
         $basicToken = base64_encode($this->fitbitClientId . ":" . $this->fitbitClientSecret);
- 
+
         if (isset($this->fitbitTokenURL) && !empty($basicToken) && !empty($code) && !empty($state)) {
             try {
                 $client = new \GuzzleHttp\Client();
@@ -141,7 +141,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
         }
     }
 
-    
+
 
     /**
      * Used to get sleep log data from Fitbit server and store to configured repleating form
@@ -159,12 +159,14 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
         $this->fitbitSleepLogRepeatingForm = $this->getProjectSetting("sleeplogrepeating-form");
         $this->fitbitSleepLogDateField = $this->getProjectSetting("sleeplog-date-field");
 
-        if (isset($this->fitbitSleepLogStoreField ) && !empty($this->fitbitSleepLogStoreField)
-        && isset($this->fitbitSleepLogRepeatingForm ) &&  !empty($this->fitbitSleepLogRepeatingForm)
-        && isset($this->fitbitSleepLogDateField ) && !empty($this->fitbitSleepLogDateField)) {
+        if (
+            isset($this->fitbitSleepLogStoreField) && !empty($this->fitbitSleepLogStoreField)
+            && isset($this->fitbitSleepLogRepeatingForm) &&  !empty($this->fitbitSleepLogRepeatingForm)
+            && isset($this->fitbitSleepLogDateField) && !empty($this->fitbitSleepLogDateField)
+        ) {
             // everthing set so continue further
         } else {
-            return FALSE;    
+            return FALSE;
         }
 
         $basicToken = "";
@@ -240,7 +242,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
     }
 
 
-     /**
+    /**
      * Used to get Activity log data from Fitbit server and store to configured repleating form
      */
     public function getLastNightActivityLog()
@@ -256,12 +258,14 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
         $this->fitbitActivityLogRepeatingForm = $this->getProjectSetting("activitylogrepeating-form");
         $this->fitbitActivityLogDateField = $this->getProjectSetting("activitylog-date-field");
 
-        if (isset($this->fitbitActivityLogStoreField ) && !empty($this->fitbitActivityLogStoreField)
-        && isset($this->fitbitActivityLogRepeatingForm ) &&  !empty($this->fitbitActivityLogRepeatingForm)
-        && isset($this->fitbitActivityLogDateField ) && !empty($this->fitbitActivityLogDateField)) {
+        if (
+            isset($this->fitbitActivityLogStoreField) && !empty($this->fitbitActivityLogStoreField)
+            && isset($this->fitbitActivityLogRepeatingForm) &&  !empty($this->fitbitActivityLogRepeatingForm)
+            && isset($this->fitbitActivityLogDateField) && !empty($this->fitbitActivityLogDateField)
+        ) {
             // everthing set so continue further
         } else {
-            return FALSE;    
+            return FALSE;
         }
 
         $basicToken = "";
@@ -302,7 +306,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
                         $yesterdayParamFormat = date('Y-m-d', strtotime("-1 days"));
                         $url = "https://api.fitbit.com/1/user/-/activities/date/" . $yesterdayParamFormat . ".json";
                         //$url =  "https://api.fitbit.com/1/user/-/activities/date/2021-10-11.json"
-                         
+
                         $activityLogResponse = $client->request('GET', $url, [
                             'headers' => [
                                 'cache-control' => 'no-cache',
@@ -310,12 +314,12 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
                                 'Authorization' => 'Bearer ' . $result['access_token']
                             ]
                         ]);
-                         
-                        
+
+
                         if ($activityLogResponse->getStatusCode() == 200 && isset($yesterdayParamFormat)) {
                             $responseContent =  $activityLogResponse->getBody()->getContents();
 
-                            
+
                             $lastInstanceId = $this->getLastRepeatingFormInstance($curr_record[$record_id_field], $this->fitbitActivityLogRepeatingForm);
                             $redcapWriteJSONArray =  [
                                 [
