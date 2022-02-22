@@ -2,8 +2,8 @@
 // Set the namespace defined in your config file
 namespace HealthPartners\Institute\FitbitDataSync;
 
-// For Guzzle HTTP Client
-include_once __DIR__ . '/vendor/autoload.php';
+// For Guzzle HTTP Client - Use REDcap provided
+//include_once __DIR__ . '/vendor/autoload.php';
 
 use REDCap;
 
