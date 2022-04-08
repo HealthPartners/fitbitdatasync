@@ -133,6 +133,24 @@
             "name": "Where to store ActivityLog date?",
             "type": "field-list",
             "required": true
+        },
+        {
+            "key": "heartratelogrepeating-form",
+            "name": "Select Heart Rate Log Repeating Form to add data for each day:",
+            "type": "form-list",
+            "required": true
+        },
+        {
+            "key": "heartratelogrepeating-store-field",
+            "name": "Where to store Heart Rate Log full response JSON?",
+            "type": "field-list",
+            "required": true
+        },
+        {
+            "key": "heartratelogrepeating-date-field",
+            "name": "Where to store Heart Rate Log date?",
+            "type": "field-list",
+            "required": true
         }
 
     ]

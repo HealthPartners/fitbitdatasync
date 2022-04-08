@@ -33,6 +33,13 @@ if (isset($_GET['pid']) && isset($_GET['action']) && $_GET['action'] == "redirec
     } else {
         echo "oops!, something went wrong";
     }
+} else if (isset($_GET['pid']) && isset($_GET['action']) && $_GET['action'] == "getlastdayheartratelog") { 
+    $apiStatus = $module->getLastDayHeartRateLog();
+    if ($apiStatus == TRUE) {
+        echo "Great!, getlastdayheartratelog job has been successfully completed";
+    } else {
+        echo "oops!, something went wrong";
+    }
 } else {
     echo "Invalid request to fitbitsync apimanager </br> </br>";
     $showInfo = TRUE;
@@ -49,6 +56,8 @@ if (isset($_GET['pid']) && isset($_GET['action']) && $_GET['action'] == "redirec
 </span></p>
 <p style="text-align: left;"><span style="font-size: 11px;">3. To run get last night activity log which pulls all the participant&nbsp;activitylog from Fitbit cloud server if authorized&nbsp;&nbsp;:</span></p>
 <p style="text-align: left;"><span style="font-size: 11px;">&nbsp;<?php echo $module->getUrl("apimanager.php", $noAuth=true, $useApiEndpoint=true) ?>&amp;action=<span style="font-weight: bold;">getlastnightactivitylog</span></span>&nbsp;</p>
-
+</span></p>
+<p style="text-align: left;"><span style="font-size: 11px;">4. To run get last day heart rate log which pulls all the participant&nbsp;heart rate log from Fitbit cloud server if authorized&nbsp;&nbsp;:</span></p>
+<p style="text-align: left;"><span style="font-size: 11px;">&nbsp;<?php echo $module->getUrl("apimanager.php", $noAuth=true, $useApiEndpoint=true) ?>&amp;action=<span style="font-weight: bold;">getlastdayheartratelog</span></span>&nbsp;</p>
 
 <?php } ?>

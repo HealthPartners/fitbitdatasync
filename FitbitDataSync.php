@@ -51,7 +51,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
                 foreach ($event as $eventid => $curr_record) {
                     $url = "";
                     $uniqueOAuthState = "";
-                    $uniqueOAuthState = md5($this->fitbitProjectSalt . NOW . $curr_record[$record_id_field]);
+                    $uniqueOAuthState = $this->getProjectId().md5($this->fitbitProjectSalt . NOW . $curr_record[$record_id_field]).$curr_record[$record_id_field];
                     $url = $this->fitbitAuthURL . "?response_type=code&client_id=$this->fitbitClientId&scope=" . rawurlencode($this->fitbitScope) . "&redirect_uri=" . rawurlencode($this->fitbitRedirectURL) . "&state=" . $uniqueOAuthState;
                     if (!empty($url) && !empty($uniqueOAuthState)) {
                         $writeDataArray = array();
@@ -229,7 +229,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
                                 ]
                             ];
 
-                            $redcapWriteJSON = json_encode($redcapWriteJSONArray, JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE,);
+                            $redcapWriteJSON = json_encode($redcapWriteJSONArray, JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE);
                             $redcapWriteJSONResponse = REDCap::saveData($this->getProjectId(), 'json', $redcapWriteJSON, 'overwrite');
                         }
                     } catch (\Exception $e) {
@@ -331,7 +331,7 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
                                 ]
                             ];
                             //print_r($redcapWriteJSONArray);
-                            $redcapWriteJSON = json_encode($redcapWriteJSONArray, JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE,);
+                            $redcapWriteJSON = json_encode($redcapWriteJSONArray, JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE);
                             $redcapWriteJSONResponse = REDCap::saveData($this->getProjectId(), 'json', $redcapWriteJSON, 'overwrite');
                         }
                     } catch (\Exception $e) {
@@ -344,7 +344,106 @@ class FitbitDataSync extends \ExternalModules\AbstractExternalModule
     }
 
 
+    /**
+     * Used to get Heart Rate log day level summary data from Fitbit server and store to configured repleating form
+     */
+    public function getLastDayHeartRateLog()
+    {
+        $record_id_field = REDCap::getRecordIdField();
+        $this->fitbitClientId = $this->getProjectSetting("fitbit-client-id");
+        $this->fitbitClientSecret = $this->getProjectSetting("fitbit-client-secret");
+        $this->fitbitTokenURL = $this->getProjectSetting("fitbit-token-url");
+        $this->fitbitRedirectURL =  $this->getProjectSetting("fitbit-redirect-url");
+        $this->fitbitAccessTokenField = $this->getProjectSetting("access-token-field");
+        $this->fitbitRefreshTokenField = $this->getProjectSetting("refresh-token-field");
+        $this->fitbitHeartRateLogStoreField = $this->getProjectSetting("heartratelogrepeating-store-field");
+        $this->fitbitHeartRateLogRepeatingForm = $this->getProjectSetting("heartratelogrepeating-form");
+        $this->fitbitHeartRateLogDateField = $this->getProjectSetting("heartratelogrepeating-date-field");
 
+        if (
+            isset($this->fitbitHeartRateLogStoreField) && !empty($this->fitbitHeartRateLogStoreField)
+            && isset($this->fitbitHeartRateLogRepeatingForm) &&  !empty($this->fitbitHeartRateLogRepeatingForm)
+            && isset($this->fitbitHeartRateLogDateField) && !empty($this->fitbitHeartRateLogDateField)
+        ) {
+            // everthing set so continue further
+        } else {
+            return FALSE;
+        }
+
+        $basicToken = "";
+        $basicToken = base64_encode($this->fitbitClientId . ":" . $this->fitbitClientSecret);
+        $filterLogic = "[" . $this->fitbitRefreshTokenField . "]" . " !=  ''";
+
+        //Loop through all the participants who has refersh token in project database
+        $readParams = array('project_id' => $this->getProjectId(), 'return_format' => 'array', 'fields' => array($record_id_field, $this->fitbitRefreshTokenField), 'filterLogic' => $filterLogic);
+        $data = REDCap::getData($readParams);
+        if (count($data) > 0) {
+            foreach ($data as $recordid => $event) {
+                foreach ($event as $eventid => $curr_record) {
+                    //echo "##### :: " .  $curr_record[$this->fitbitRefreshTokenField];
+                    try {
+                        $client = new \GuzzleHttp\Client();
+                        $result = [];
+                        $response = $client->request('POST', $this->fitbitTokenURL, [
+                            'form_params' => [
+                                'refresh_token' => $curr_record[$this->fitbitRefreshTokenField],
+                                'grant_type' => 'refresh_token'
+                            ],
+                            'headers' => [
+                                'cache-control' => 'no-cache',
+                                'content-type' => 'application/x-www-form-urlencoded',
+                                'Authorization' => 'Basic ' . $basicToken
+                            ]
+                        ]);
+
+                        if ($response->getStatusCode() == 200) {
+                            $result = json_decode($response->getBody()->getContents(), true);
+                            $writeDataArray = array();
+                            $writeDataArray[$curr_record[$record_id_field]][$eventid][$record_id_field] = $curr_record[$record_id_field];
+                            $writeDataArray[$curr_record[$record_id_field]][$eventid][$this->fitbitAccessTokenField] = $result['access_token'];
+                            $writeDataArray[$curr_record[$record_id_field]][$eventid][$this->fitbitRefreshTokenField] = $result['refresh_token'];
+                            $saveREDCapResponse = REDCap::saveData($this->getProjectId(), 'array', $writeDataArray, 'overwrite');
+                        }
+
+                        $yesterdayParamFormat = date('Y-m-d', strtotime("-1 days"));
+                        $url = "https://api.fitbit.com/1/user/-/activities/heart/date/" . $yesterdayParamFormat . "/1d.json";
+
+                        $heartRateLogResponse = $client->request('GET', $url, [
+                            'headers' => [
+                                'cache-control' => 'no-cache',
+                                'accept' => 'application/json',
+                                'Authorization' => 'Bearer ' . $result['access_token']
+                            ]
+                        ]);
+
+
+                        if ($heartRateLogResponse->getStatusCode() == 200 && isset($yesterdayParamFormat)) {
+                            $responseContent =  $heartRateLogResponse->getBody()->getContents();
+
+
+                            $lastInstanceId = $this->getLastRepeatingFormInstance($curr_record[$record_id_field], $this->fitbitHeartRateLogRepeatingForm);
+                            $redcapWriteJSONArray =  [
+                                [
+                                    "record_id"  => $curr_record[$record_id_field],
+                                    "redcap_repeat_instrument" => $this->fitbitHeartRateLogRepeatingForm,
+                                    "redcap_repeat_instance" => $lastInstanceId + 1,
+                                    $this->fitbitHeartRateLogStoreField => $responseContent,
+                                    $this->fitbitHeartRateLogDateField => $yesterdayParamFormat
+                                ]
+                            ];
+                            //print_r($redcapWriteJSONArray);
+                            $redcapWriteJSON = json_encode($redcapWriteJSONArray, JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE);
+                            $redcapWriteJSONResponse = REDCap::saveData($this->getProjectId(), 'json', $redcapWriteJSON, 'overwrite');
+                            //print_r($redcapWriteJSONResponse);
+                        }
+                    } catch (\Exception $e) {
+                        echo 'Message: ' . $e->getMessage();
+                    }
+                }
+            }
+        }
+        return TRUE;
+    }
 
     /**
      * Used to get last repating form instance number to generate next instance
