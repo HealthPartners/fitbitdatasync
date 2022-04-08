@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ODM xmlns="http://www.cdisc.org/ns/odm/v1.3" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:redcap="https://projectredcap.org" xsi:schemaLocation="http://www.cdisc.org/ns/odm/v1.3 schema/odm/ODM1-3-1.xsd" ODMVersion="1.3.1" FileOID="000-00-0000" FileType="Snapshot" Description="FitbitDataSync" AsOfDateTime="2021-10-11T18:12:20" CreationDateTime="2021-10-11T18:12:20" SourceSystem="REDCap" SourceSystemVersion="10.8.4">
-<Study OID="Project.FitbitDataSync">
+<ODM xmlns="http://www.cdisc.org/ns/odm/v1.3" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:redcap="https://projectredcap.org" xsi:schemaLocation="http://www.cdisc.org/ns/odm/v1.3 schema/odm/ODM1-3-1.xsd" ODMVersion="1.3.1" FileOID="000-00-0000" FileType="Snapshot" Description="FitbitDataSyncExternalModuleProjectDemo" AsOfDateTime="2022-04-08T15:07:46" CreationDateTime="2022-04-08T15:07:46" SourceSystem="REDCap" SourceSystemVersion="12.0.5">
+<Study OID="Project.FitbitDataSyncExternalModulePr">
 <GlobalVariables>
-	<StudyName>FitbitDataSync</StudyName>
-	<StudyDescription>This file contains the metadata, events, and data for REDCap project "FitbitDataSync".</StudyDescription>
-	<ProtocolName>FitbitDataSync</ProtocolName>
+	<StudyName>FitbitDataSyncExternalModuleProjectDemo</StudyName>
+	<StudyDescription>This file contains the metadata, events, and data for REDCap project "FitbitDataSyncExternalModuleProjectDemo".</StudyDescription>
+	<ProtocolName>FitbitDataSyncExternalModuleProjectDemo</ProtocolName>
 	<redcap:RecordAutonumberingEnabled>1</redcap:RecordAutonumberingEnabled>
 	<redcap:CustomRecordLabel></redcap:CustomRecordLabel>
 	<redcap:SecondaryUniqueField></redcap:SecondaryUniqueField>
@@ -15,19 +15,27 @@
 	<redcap:PurposeOther></redcap:PurposeOther>
 	<redcap:ProjectNotes></redcap:ProjectNotes>
 	<redcap:MissingDataCodes></redcap:MissingDataCodes>
+	<redcap:ProtectedEmailMode>0</redcap:ProtectedEmailMode>
+	<redcap:ProtectedEmailModeCustomText></redcap:ProtectedEmailModeCustomText>
+	<redcap:ProtectedEmailModeTrigger>ALL</redcap:ProtectedEmailModeTrigger>
+	<redcap:ProtectedEmailModeLogo></redcap:ProtectedEmailModeLogo>
 	<redcap:RepeatingInstrumentsAndEvents>
 		<redcap:RepeatingInstruments>
 			<redcap:RepeatingInstrument redcap:UniqueEventName="event_1_arm_1" redcap:RepeatInstrument="sleep_data" redcap:CustomLabel="[dateofsleep]"/>
 			<redcap:RepeatingInstrument redcap:UniqueEventName="event_1_arm_1" redcap:RepeatInstrument="activity_data" redcap:CustomLabel="[dateofactivity]"/>
+			<redcap:RepeatingInstrument redcap:UniqueEventName="event_1_arm_1" redcap:RepeatInstrument="heart_rate_data" redcap:CustomLabel="[dateofheartrate]"/>
 		</redcap:RepeatingInstruments>
 	</redcap:RepeatingInstrumentsAndEvents>
 	<redcap:SurveysGroup>
 		<redcap:Surveys form_name="fitbit_data_sync_invite_survey" title="Fitbit Data Sync Invite Survey" instructions="&lt;p&gt;&lt;strong&gt;Please complete the survey below.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Thank you!&lt;/p&gt;" acknowledgement="&lt;p&gt;&lt;strong&gt;Thank you for taking the survey.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Have a nice day!&lt;/p&gt;" question_by_section="0" display_page_number="0" question_auto_numbering="1" survey_enabled="1" save_and_return="0" save_and_return_code_bypass="0" logo="" hide_title="0" view_results="0" min_responses_view_results="10" check_diversity_view_results="0" end_survey_redirect_url="" survey_expiration="" promis_skip_question="0" survey_auth_enabled_single="0" edit_completed_response="0" hide_back_button="0" show_required_field_text="1" confirmation_email_subject="" confirmation_email_content="" confirmation_email_from="" confirmation_email_from_display="" confirmation_email_attach_pdf="0" confirmation_email_attachment="" text_to_speech="0" text_to_speech_language="en" end_survey_redirect_next_survey="0" theme="" text_size="1" font_family="16" theme_text_buttons="" theme_bg_page="" theme_text_title="" theme_bg_title="" theme_text_sectionheader="" theme_bg_sectionheader="" theme_text_question="" theme_bg_question="" enhanced_choices="0" repeat_survey_enabled="0" repeat_survey_btn_text="" repeat_survey_btn_location="HIDDEN" response_limit="" response_limit_include_partials="1" response_limit_custom_text="&lt;p&gt;Thank you for your interest; however, the survey is closed because the maximum number of responses has been reached.&lt;/p&gt;" survey_time_limit_days="" survey_time_limit_hours="" survey_time_limit_minutes="" email_participant_field="" end_of_survey_pdf_download="0" pdf_save_to_field="" pdf_save_to_event_id="" pdf_auto_archive="0" pdf_econsent_version="" pdf_econsent_type="" pdf_econsent_firstname_field="" pdf_econsent_firstname_event_id="" pdf_econsent_lastname_field="" pdf_econsent_lastname_event_id="" pdf_econsent_dob_field="" pdf_econsent_dob_event_id="" pdf_econsent_allow_edit="1" pdf_econsent_signature_field1="" pdf_econsent_signature_field2="" pdf_econsent_signature_field3="" pdf_econsent_signature_field4="" pdf_econsent_signature_field5=""/>
+&lt;p&gt;Thank you!&lt;/p&gt;" offline_instructions="" acknowledgement="&lt;p&gt;&lt;strong&gt;Thank you for taking the survey.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Have a nice day!&lt;/p&gt;" stop_action_acknowledgement="" stop_action_delete_response="0" question_by_section="0" display_page_number="0" question_auto_numbering="1" survey_enabled="1" save_and_return="0" save_and_return_code_bypass="0" logo="" hide_title="0" view_results="0" min_responses_view_results="10" check_diversity_view_results="0" end_survey_redirect_url="" survey_expiration="" promis_skip_question="0" survey_auth_enabled_single="0" edit_completed_response="0" hide_back_button="0" show_required_field_text="1" confirmation_email_subject="" confirmation_email_content="" confirmation_email_from="" confirmation_email_from_display="" confirmation_email_attach_pdf="0" confirmation_email_attachment="" text_to_speech="0" text_to_speech_language="en" end_survey_redirect_next_survey="0" theme="" text_size="1" font_family="16" theme_text_buttons="" theme_bg_page="" theme_text_title="" theme_bg_title="" theme_text_sectionheader="" theme_bg_sectionheader="" theme_text_question="" theme_bg_question="" enhanced_choices="0" repeat_survey_enabled="0" repeat_survey_btn_text="" repeat_survey_btn_location="HIDDEN" response_limit="" response_limit_include_partials="1" response_limit_custom_text="&lt;p&gt;Thank you for your interest; however, the survey is closed because the maximum number of responses has been reached.&lt;/p&gt;" survey_time_limit_days="" survey_time_limit_hours="" survey_time_limit_minutes="" email_participant_field="" end_of_survey_pdf_download="0" pdf_save_to_field="" pdf_save_to_event_id="" pdf_auto_archive="0" pdf_econsent_version="" pdf_econsent_type="" pdf_econsent_firstname_field="" pdf_econsent_firstname_event_id="" pdf_econsent_lastname_field="" pdf_econsent_lastname_event_id="" pdf_econsent_dob_field="" pdf_econsent_dob_event_id="" pdf_econsent_allow_edit="1" pdf_econsent_signature_field1="" pdf_econsent_signature_field2="" pdf_econsent_signature_field3="" pdf_econsent_signature_field4="" pdf_econsent_signature_field5=""/>
 	</redcap:SurveysGroup>
+	<redcap:ReportsGroup>
+		<redcap:Reports title="Test" unique_report_name="R-973RJFRREH" report_order="1" user_access="ALL" user_edit_access="ALL" description="" combine_checkbox_values="0" output_dags="0" output_survey_fields="0" output_missing_data_codes="0" remove_line_breaks_in_values="1" orderby_field1="record_id" orderby_sort1="ASC" orderby_field2="" orderby_sort2="" orderby_field3="" orderby_sort3="" advanced_logic="" filter_type="RECORD" dynamic_filter1="" dynamic_filter2="" dynamic_filter3="" hash="JCPR43JERR8CAE9Y" short_url="" is_public="0" report_display_include_repeating_fields="1" report_display_header="BOTH" report_display_data="BOTH" limiter_logic="" redcap_reports_fields="record_id,oauth_unique_state" redcap_reports_filter_dags="" redcap_reports_filter_events="" ID="58eb9140e6391df425e463cf6d6057f0ef92e90b"/>
+	</redcap:ReportsGroup>
 </GlobalVariables>
-<MetaDataVersion OID="Metadata.FitbitDataSync_2021-10-11_1812" Name="FitbitDataSync" redcap:RecordIdField="record_id">
+<MetaDataVersion OID="Metadata.FitbitDataSyncExternalModulePr_2022-04-08_1507" Name="FitbitDataSyncExternalModuleProjectDemo" redcap:RecordIdField="record_id">
 	<FormDef OID="Form.basic_demography" Name="Basic Demography" Repeating="No" redcap:FormName="basic_demography">
 		<ItemGroupRef ItemGroupOID="basic_demography.record_id" Mandatory="No"/>
 		<ItemGroupRef ItemGroupOID="basic_demography.basic_demography_complete" Mandatory="No"/>
@@ -43,6 +51,10 @@
 	<FormDef OID="Form.activity_data" Name="Activity Data" Repeating="No" redcap:FormName="activity_data">
 		<ItemGroupRef ItemGroupOID="activity_data.dateofactivity" Mandatory="No"/>
 		<ItemGroupRef ItemGroupOID="activity_data.activity_data_complete" Mandatory="No"/>
+	</FormDef>
+	<FormDef OID="Form.heart_rate_data" Name="Heart Rate Data" Repeating="No" redcap:FormName="heart_rate_data">
+		<ItemGroupRef ItemGroupOID="heart_rate_data.dateofheartrate" Mandatory="No"/>
+		<ItemGroupRef ItemGroupOID="heart_rate_data.heart_rate_data_complete" Mandatory="No"/>
 	</FormDef>
 	<ItemGroupDef OID="basic_demography.record_id" Name="Basic Demography" Repeating="No">
 		<ItemRef ItemOID="record_id" Mandatory="No" redcap:Variable="record_id"/>
@@ -74,6 +86,13 @@
 	</ItemGroupDef>
 	<ItemGroupDef OID="activity_data.activity_data_complete" Name="Form Status" Repeating="No">
 		<ItemRef ItemOID="activity_data_complete" Mandatory="No" redcap:Variable="activity_data_complete"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="heart_rate_data.dateofheartrate" Name="Heart Rate Data" Repeating="No">
+		<ItemRef ItemOID="dateofheartrate" Mandatory="No" redcap:Variable="dateofheartrate"/>
+		<ItemRef ItemOID="heartratelog_response" Mandatory="No" redcap:Variable="heartratelog_response"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="heart_rate_data.heart_rate_data_complete" Name="Form Status" Repeating="No">
+		<ItemRef ItemOID="heart_rate_data_complete" Mandatory="No" redcap:Variable="heart_rate_data_complete"/>
 	</ItemGroupDef>
 	<ItemDef OID="record_id" Name="record_id" DataType="text" Length="999" redcap:Variable="record_id" redcap:FieldType="text">
 		<Question><TranslatedText>Record ID</TranslatedText></Question>
@@ -126,6 +145,16 @@ Fitbit Data Linking</TranslatedText><redcap:FormattedTranslatedText>&lt;div clas
 		<Question><TranslatedText>Complete?</TranslatedText></Question>
 		<CodeListRef CodeListOID="activity_data_complete.choices"/>
 	</ItemDef>
+	<ItemDef OID="dateofheartrate" Name="dateofheartrate" DataType="text" Length="999" redcap:Variable="dateofheartrate" redcap:FieldType="text">
+		<Question><TranslatedText>Date of Heart Rate Log from Fitbit</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="heartratelog_response" Name="heartratelog_response" DataType="text" Length="999" redcap:Variable="heartratelog_response" redcap:FieldType="textarea">
+		<Question><TranslatedText>Full Heart Rate Log Response : </TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="heart_rate_data_complete" Name="heart_rate_data_complete" DataType="text" Length="1" redcap:Variable="heart_rate_data_complete" redcap:FieldType="select" redcap:SectionHeader="Form Status">
+		<Question><TranslatedText>Complete?</TranslatedText></Question>
+		<CodeListRef CodeListOID="heart_rate_data_complete.choices"/>
+	</ItemDef>
 	<CodeList OID="basic_demography_complete.choices" Name="basic_demography_complete" DataType="text" redcap:Variable="basic_demography_complete">
 		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
 		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
@@ -142,6 +171,11 @@ Fitbit Data Linking</TranslatedText><redcap:FormattedTranslatedText>&lt;div clas
 		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
 	</CodeList>
 	<CodeList OID="activity_data_complete.choices" Name="activity_data_complete" DataType="text" redcap:Variable="activity_data_complete">
+		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
+	</CodeList>
+	<CodeList OID="heart_rate_data_complete.choices" Name="heart_rate_data_complete" DataType="text" redcap:Variable="heart_rate_data_complete">
 		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
 		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
 		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
